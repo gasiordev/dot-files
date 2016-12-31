@@ -104,10 +104,10 @@ if has('langmap') && exists('+langnoremap')
 endif
 
 if has("autocmd")
-  autocmd FileType text setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
-  autocmd FileType php setlocal expandtab shiftwidth=2 tabstop=2 textwidth=118
-  autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
-  autocmd FileType sh setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
+  autocmd FileType text setlocal expandtab shiftwidth=2 tabstop=4 textwidth=78
+  autocmd FileType php setlocal expandtab shiftwidth=2 tabstop=4 textwidth=118
+  autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=4 textwidth=78
+  autocmd FileType sh setlocal expandtab shiftwidth=2 tabstop=4 textwidth=78
   autocmd FileType puppet setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
   autocmd FileType perl setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
   autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
