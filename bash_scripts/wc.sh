@@ -12,7 +12,7 @@ if [[ $src != "x" && $src != "l" ]]; then
     exit 1
 fi
 
-if [[ ! $name =~ ^[a-zA-Z0-9]+$ ]]; then
+if [[ ! $name =~ ^[_a-zA-Z0-9\-]+$ ]]; then
     usage
     exit 1
 fi
