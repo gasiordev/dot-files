@@ -1,4 +1,4 @@
-alias e='vim -u ~/.vimrc-laatu'
+alias e='vim -u ~/.vimrc'
 
 alias xa='git add'
 alias xc='git commit'
