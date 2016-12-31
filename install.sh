@@ -5,6 +5,7 @@ pwd=$(pwd)
 test -f ~/.bash_aliases && mv ~/.bash_aliases ~/.bash_aliases.bak
 test -f ~/.tmux.conf && mv ~/.tmux.conf ~/.tmux.conf.bak
 test -f ~/.vimrc && mv ~/.vimrc ~/.vimrc.bak
+rm -rf ~/.bash_scripts.bak
 test -d ~/.bash_scripts && mv ~/.bash_scripts ~/.bash_scripts.bak
 
 cp -rf $pwd/bash_aliases ~/.bash_aliases

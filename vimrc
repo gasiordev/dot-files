@@ -1,20 +1,3 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2014 Nov 05
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
@@ -32,9 +15,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -42,14 +22,13 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+  set mouse=""
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
+if &t_Co > 2
   syntax on
   set hlsearch
 endif
@@ -67,8 +46,9 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  " Set 'textwidth'
+  autocmd FileType text setlocal expandtab shiftwidth=4 tabstop=4 textwidth=0
+  autocmd FileType php  setlocal expandtab shiftwidth=4 tabstop=4 textwidth=119
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -81,10 +61,6 @@ if has("autocmd")
     \ endif
 
   augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
 
@@ -101,16 +77,6 @@ if has('langmap') && exists('+langnoremap')
   " mapping.  If unset (default), this may break plugins (but it's backward
   " compatible).
   set langnoremap
-endif
-
-if has("autocmd")
-  autocmd FileType text setlocal expandtab shiftwidth=2 tabstop=4 textwidth=78
-  autocmd FileType php setlocal expandtab shiftwidth=2 tabstop=4 textwidth=118
-  autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=4 textwidth=78
-  autocmd FileType sh setlocal expandtab shiftwidth=2 tabstop=4 textwidth=78
-  autocmd FileType puppet setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
-  autocmd FileType perl setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
-  autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 textwidth=78
 endif
 
 set nobackup
