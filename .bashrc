@@ -1,3 +1,7 @@
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
 alias e='vim -u ~/.vimrc'
 
 alias aa='git add'
