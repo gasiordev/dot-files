@@ -8,7 +8,5 @@ alias gg='git clone'
 alias ss='git status'
 alias dd='git diff'
 
-alias wc='~/.bash_scripts/wc.sh'
-
 alias c='cat'
 
