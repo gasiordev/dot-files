@@ -1,6 +1,6 @@
 [user]
-  email = mg@siliconmonks.com
-  name = Mikolaj Gasior
+  email = nicholas@laatu.uk
+  name = Nicholas Gasior
 [alias]
   l=log --pretty=oneline -n 20 --graph --abbrev-commit
   s=status -s
