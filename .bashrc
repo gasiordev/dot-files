@@ -4,13 +4,13 @@ fi
 
 alias e='vim -u ~/.vimrc'
 
-alias aa='git add'
-alias cc='git commit'
-alias pp='git pull'
-alias oo='git push'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git pull'
+alias go='git push'
 alias gg='git clone'
-alias ss='git status'
-alias dd='git diff'
+alias gs='git status'
+alias gd='git diff'
 
 alias c='clear'
 
