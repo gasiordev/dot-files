@@ -1,5 +1,5 @@
 [user]
-  email = nicholas@laatu.uk
+  email = nmls@laatu.se
   name = Nicholas Gasior
 [alias]
   l=log --pretty=oneline -n 20 --graph --abbrev-commit
