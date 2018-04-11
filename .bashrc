@@ -39,9 +39,9 @@ undev() {
 ps1() {
   cols=`tput cols`
   if [[ $cols -gt 80 ]]; then
-    export PS1="\e[0;35m\d \t \e[1;34m\u\e[0;34m@\e[0;34m\h\e[m \e[0;33m\w\e[m \$(if ! git diff-index --quiet HEAD -- >/dev/null 2>&1; then echo '\e[0;31m'; else echo '\e[0;32m'; fi)\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\e[m$ "
+    export PS1="\e[0;35m\d \t \e[1;34m\u\e[0;36m@\h\e[m \e[0;33m\w\e[m \$(if ! git diff-index --quiet HEAD -- >/dev/null 2>&1; then echo '\e[0;31m'; else echo '\e[0;32m'; fi)\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\e[m$ "
   else
-    export PS1="\e[1;34m\u\e[0;34m@\e[0;34m\h\e[m \e[0;33m\W\e[m$ "
+    export PS1="\e[1;34m\u\e[0;36m@\h\e[m \e[0;33m\W\e[m$ "
   fi
   if [[ DEV_MODE -eq 1 ]]; then
     export PS1="\e[0;33m\w\e[m \$(if ! git diff-index --quiet HEAD -- >/dev/null 2>&1; then echo '\e[0;31m'; else echo '\e[0;32m'; fi)\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\e[m$ "
