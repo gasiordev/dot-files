@@ -50,7 +50,3 @@ ps1() {
 
 ps1
 
-ide1() {
-  tmux new-session \; split-window -h -p 30 -t 0 "watch -n1 \"find . -path '*/.*' -prune -o -print | sed -e 's;[^/]*/;|___;g;s;___|; |;g'\"" \; split-window -v -p 20 -t 0 \; select-pane -t 0
-}
-
