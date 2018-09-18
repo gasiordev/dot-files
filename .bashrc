@@ -50,3 +50,4 @@ ps1() {
 
 ps1
 
+alias sts=~/.bin/sts.sh
