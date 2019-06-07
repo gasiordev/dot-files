@@ -50,6 +50,7 @@ if has("autocmd")
     " Set 'textwidth'
     autocmd FileType text setlocal expandtab shiftwidth=4 tabstop=4 textwidth=0
     autocmd FileType php  setlocal expandtab shiftwidth=4 tabstop=4 textwidth=119
+    autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 textwidth=80
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
