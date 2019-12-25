@@ -2,7 +2,7 @@
 
 Usage() {
   echo "Usage: ./certbot-create-cert.sh --domain=example.com [--add-www] \\"
-  echo "                                --website-path=/var/www/html/example.com \\"
+  echo "                                --website-path=/home/nicholas/websites/example.com \\"
   echo "                                --letsencrypt-path=/home/nicholas/letsencrypt \\"
   echo ""
   exit 1
