@@ -1,0 +1,11 @@
+#cloud-config
+package_upgrade: true
+users:
+  - name: Nicholas Gasior
+    groups: wheel
+    lock_passwd: false
+    passwd: PASSWD 
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - SSH_PUBLIC_KEY
