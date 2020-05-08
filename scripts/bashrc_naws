@@ -1,21 +1,33 @@
-alias naws="PATH_TO_NAWS.SH"
-
 a() {
-  if [[ "$1" != "" ]]; then
-    naws.sh --refresh | grep "$1";
+  profile="default"
+  if [[ ! "$1" =~ ^[a-z0-9]+$ ]]; then
+    echo "Invalid profile"
+    return 1
+  fi
+  profile="$1"
+
+  if [[ "$2" != "" ]]; then
+    naws --refresh --profile="$profile" | grep "$1";
   else
-    naws.sh --refresh;
+    naws --refresh --profile="$profile";
   fi
 }
 
 assh() {
-  if [[ "$1" != "" ]]; then
+  profile=default
+  if [[ ! "$1" =~ ^[a-z0-9]+$ ]]; then
+    echo "Invalid profile"
+    return 1
+  fi
+  profile="$1"
+
+  if [[ "$2" != "" ]]; then
     tmux_win=""
-    naws --refresh | grep "$1" | while read line; do
+    naws --refresh --profile="$profile" | grep "$2" | while read line; do
       echo "Found: $line"
       found_ip=`echo "$line" | awk '{ print $1 }'`
       if [[ "$tmux_win" == "" ]]; then
-        tmux_win=`tmux new-window -n ssh_"$1" -P "ssh -l nicholas $found_ip"`;
+        tmux_win=`tmux new-window -n ssh_"$2" -P "ssh -l nicholas $found_ip"`;
       else 
         tmux split-window -v -t "$tmux_win" bash -c "ssh -l nicholas $found_ip";
       fi;
