@@ -1,0 +1,29 @@
+
+a() {
+  if [[ "$1" != "" ]]; then
+    ./naws.sh --refresh | grep "$1";
+  else
+    ./naws.sh --refresh;
+  fi
+}
+
+assh() {
+  if [[ "$1" != "" ]]; then
+    tmux_win=""
+    ./naws.sh --refresh | grep "$1" | while read line; do
+      echo "Found: $line"
+      found_ip=`echo "$line" | awk '{ print $1 }'`
+      if [[ "$tmux_win" == "" ]]; then
+        tmux_win=`tmux new-window -n ssh_"$1" -P "ssh -l nicholas $found_ip"`;
+      else 
+        tmux split-window -v -t "$tmux_win" bash -c "ssh -l nicholas $found_ip";
+      fi;
+    done
+    if [[ "$tmux_win" != "" ]]; then
+      tmux select-layout -t "$tmux_win" even-vertical;
+    fi
+    tmux select-layout -t 1 even-vertical
+  else
+    echo "Nothing to do";
+  fi
+}
