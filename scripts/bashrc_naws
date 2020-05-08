@@ -1,16 +1,17 @@
+alias naws="PATH_TO_NAWS.SH"
 
 a() {
   if [[ "$1" != "" ]]; then
-    ./naws.sh --refresh | grep "$1";
+    naws.sh --refresh | grep "$1";
   else
-    ./naws.sh --refresh;
+    naws.sh --refresh;
   fi
 }
 
 assh() {
   if [[ "$1" != "" ]]; then
     tmux_win=""
-    ./naws.sh --refresh | grep "$1" | while read line; do
+    naws --refresh | grep "$1" | while read line; do
       echo "Found: $line"
       found_ip=`echo "$line" | awk '{ print $1 }'`
       if [[ "$tmux_win" == "" ]]; then
