@@ -22,7 +22,7 @@ if [[ ! -f "$profile_cache_file" || "$do_refresh" == "yes" ]]; then
 fi
 
 if [[ -f "$profile_cache_file" ]]; then
-  for i in `cat "$profile_cache_file" | jq -c '.Reservations[].Instances[] | select(.State.Name=="running")' | base64`; do
+  for i in `cat "$profile_cache_file" | jq -c '.Reservations[].Instances[] | select(.State.Name=="running")' | base64 -w 0`; do
     echo ${i} | base64 --decode | jq -r '[.PrivateIpAddress, if .PublicIpAddress == null then "-" else .PublicIpAddress end, (.Tags[] | select(.Key=="Name") | .Value)]' | jq -r 'join(" ")' | awk '{ printf "%-16s %-16s %-50s\n", $1, $2, $3}'
   done
 else
