@@ -21,8 +21,14 @@ if [[ ! -f "$profile_cache_file" || "$do_refresh" == "yes" ]]; then
   aws --profile=$profile ec2 describe-instances --max-items=150 --output=json > "$profile_cache_file";
 fi
 
+base64_args=
+darwin=`uname`
+if [[ "$darwin" =~ ^.*Linux.*$ ]]; then
+  base64_args="-w 0"
+fi
+
 if [[ -f "$profile_cache_file" ]]; then
-  for i in `cat "$profile_cache_file" | jq -c '.Reservations[].Instances[] | select(.State.Name=="running")' | base64 -w 0`; do
+  for i in `cat "$profile_cache_file" | jq -c '.Reservations[].Instances[] | select(.State.Name=="running")' | base64 $base64_args`; do
     echo ${i} | base64 --decode | jq -r '[.PrivateIpAddress, if .PublicIpAddress == null then "-" else .PublicIpAddress end, (.Tags[] | select(.Key=="Name") | .Value)]' | jq -r 'join(" ")' | awk '{ printf "%-16s %-16s %-50s\n", $1, $2, $3}'
   done
 else
